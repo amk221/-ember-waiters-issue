@@ -1,7 +1,14 @@
-{{page-title "Example"}}
+<BusyButton
+  @text="Click me"
+  @busyText="Please wait..."
+  @onClick={{this.perform}}
+/>
 
-{{outlet}}
-
-{{! The following component displays Ember's default welcome message. }}
-<WelcomePage />
-{{! Feel free to remove this! }}
+{{#if this.showModal}}
+  <div class="dialog">
+    Are you sure?
+    <br />
+    <button type="button" class="yes" {{on "click" this.confirm}}>Yes</button>
+    <button type="button" class="no" {{on "click" this.cancel}}>No</button>
+  </div>
+{{/if}}
